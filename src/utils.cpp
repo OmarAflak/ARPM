@@ -21,10 +21,12 @@ bool readGraph(const char* filename, Graph& graph){
 
 		for(int i=0 ; i<graph.degree ; i++){
 			getline(file, line);
+			std::stringstream ss(line);
+
 			Vertex vertex;
-			vertex.i1 = toInt(std::string(line[0]));
-			vertex.i2 = toInt(std::string(line[1]));
-			vertex.weight = toInt(std::string(line[2]));
+			ss >> vertex.i1;
+			ss >> vertex.i2;
+			ss >> vertex.weight;
 			graph.vertices.push_back(vertex);
 		}
 
