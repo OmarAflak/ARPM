@@ -8,6 +8,8 @@ int main(int argc, char const *argv[]){
 
 	if(readGraph(graph_name, graph)){
 		Graph arpm = kruskal(graph, 0);
+		std::cout << arpm << std::endl;
+		
 		if(saveGraph(arpm_name, arpm)){
 			std::cout << "Minimum Spanning Tree saved in: " << arpm_name << std::endl;
 		}
