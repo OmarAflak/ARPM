@@ -34,3 +34,20 @@ bool readGraph(const char* filename, Graph& graph){
 	}
 	return false;
 }
+
+bool saveGraph(const char* filename, const Graph& graph){
+	std::ofstream file(filename);
+	if(file){
+		file << graph.order << std::endl;
+		file << graph.degree << std::endl;
+
+		for(int i=0 ; i<graph.degree ; i++){
+			file << graph.vertices[i].node1 << " ";
+			file << graph.vertices[i].node2 << " ";
+			file << graph.vertices[i].weight << std::endl;
+		}
+
+		return true;
+	}
+	return false;
+}

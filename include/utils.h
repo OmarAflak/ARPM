@@ -15,6 +15,7 @@ struct vertexComparator {
 
 int toInt(std::string str);
 bool readGraph(const char* filename, Graph& graph);
+bool saveGraph(const char* filename, const Graph& graph);
 void kruskal(Graph& graph);
 
 #endif
