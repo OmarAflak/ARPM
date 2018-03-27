@@ -1,20 +1,41 @@
 #include "../include/algorithm.h"
 
-void kruskal(Graph& graph){
+Graph kruskal(Graph& graph, int node){
     std::sort(graph.vertices.begin(), graph.vertices.end(), vertexComparator());
     std::vector<Vertex> &vertices = graph.vertices;
-    for(int i=0 ; i<vertices.size() ; i++){
-        vertices[i].processed = true;
-        if(canAdd(graph, vertices[i])){
-            vertices[i].processed = false;
+    std::vector<Vertex> tree(graph.order-1);
+    std::vector<int> connexe;
+    int i=0,j=0,node1=0,node2=0;
+    Vertex tmp;
+
+    for(int x=0 ; x<graph.order ; x++){
+        connexe.push_back(x);
+    }
+
+    while(i<=graph.order && j<graph.degree){
+        tmp = vertices[i];
+        node1 = connexe[tmp.node1];
+        node2 = connexe[tmp.node2];
+
+        if(node1==node2){
+            i++;
+        }
+        else{
+            tree[j] = tmp;
+            i++;
+            j++;
+
+            for(int x=0 ; x<connexe.size() ; x++){
+                if(connexe[x]==node1){
+                    connexe[x] = node2;
+                }
+            }
         }
     }
-}
 
-bool canAdd(const Graph& graph, const Vertex& vertex){
-    std::vector<Vertex> vertices = graph.vertices;
-    int start = vertex.i1;
-    int end = vertex.i2;
-
-    // logic
+    Graph result;
+    result.vertices = tree;
+    result.order = graph.order;
+    result.degree = tree.size();
+    return result;
 }

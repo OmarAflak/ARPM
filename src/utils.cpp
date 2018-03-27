@@ -24,8 +24,8 @@ bool readGraph(const char* filename, Graph& graph){
 			std::stringstream ss(line);
 
 			Vertex vertex;
-			ss >> vertex.i1;
-			ss >> vertex.i2;
+			ss >> vertex.node1;
+			ss >> vertex.node2;
 			ss >> vertex.weight;
 			graph.vertices.push_back(vertex);
 		}

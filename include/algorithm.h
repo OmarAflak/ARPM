@@ -4,7 +4,6 @@
 #include <algorithm>
 #include "utils.h"
 
-void kruskal(Graph& graph);
-bool canAdd(const Graph& graph, const Vertex& vertex);
+Graph kruskal(Graph& graph, int node);
 
 #endif

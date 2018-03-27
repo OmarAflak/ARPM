@@ -7,13 +7,13 @@ int main(int argc, char const *argv[]){
 	const char* filename = "data/graph";
 
 	if(readGraph(filename, graph)){
-		kruskal(graph);
+		Graph arpm = kruskal(graph, 0);
 
-		std::cout << "order : " << graph.order << std::endl;
-		std::cout << "degree : " << graph.degree << std::endl;
-		for(int i=0 ; i<graph.degree ; i++){
-			std::cout << graph.vertices[i].i1 << ":" << graph.vertices[i].i2 << " -> ";
-			std::cout << graph.vertices[i].weight << std::endl;
+		std::cout << "order : " << arpm.order << std::endl;
+		std::cout << "degree : " << arpm.degree << std::endl;
+		for(int i=0 ; i<arpm.degree ; i++){
+			std::cout << arpm.vertices[i].node1 << ":" << arpm.vertices[i].node2 << " -> ";
+			std::cout << arpm.vertices[i].weight << std::endl;
 		}
 	}
 	else{
